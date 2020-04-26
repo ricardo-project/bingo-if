@@ -375,10 +375,10 @@
         function bingo() {
             var name1 = txtFunc(nameUsu.value);
             var isDownload = true;
-            var quantMot = 0;
+            var quantMot = [];
             if(name1 == "") {
                 isDownload = false;
-                quantMot++;
+                quantMot.push("0");
             } var isName = false;
             var nameValid = new Array();
             for(var t = 1; t <= numList; t++) {
@@ -389,14 +389,14 @@
                 }
             } if(isName == false) {
                 isDownload = false;
-                quantMot++;
+                quantMot.push("1");
             } if(isDownload == false) {
                 var consMens = "";
                 if(quantMot > 1) {
                     consMens = "s";
                 } var mensagem = "O download da imagem será impossibilitado pelo" + consMens + " seguinte" + consMens + " motivo" + consMens + ":\n";
-                for(var u = 1; u <= quantMot; u++) {
-                    mensagem += " - " + motivos[u - 1] + "\n";
+                for(var u = 0; u < quantMot.length; u++) {
+                    mensagem += " - " + motivos[parseFloat(quantMot[u])] + "\n";
                 } mensagem += "Insira os dados válidos e clique novamente no botão!";
                 alert(mensagem);
             } else if(isDownload == true) {
