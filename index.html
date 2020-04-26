@@ -219,16 +219,6 @@
             <canvas width=890 height=1300 id=cnvsBingo></canvas>
             <a id=abingo></a>
             <img id=imgIconObj class=imgCnvs>
-            <img src="https://pt.seaicons.com/wp-content/uploads/2015/08/Patent-Pen-icon.png" id=imgCaneta class=imgCnvs>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Redx2.svg/675px-Redx2.svg.png" id=XIcon class=imgCnvs>
-            <img src="https://www.curysolucoes.com.br/wp-content/uploads/2018/01/1418465615_698868-icon-132-cloud-512-512x372.png" id=nuvemIcon class=imgCnvs>
-            <img src="https://images.vexels.com/media/users/3/127092/isolated/preview/72f9c59cf2f33fadae72fcc61f8e691c-mochila-camping---cone-by-vexels.png" id=imgBag class=imgCnvs>
-            <img src="https://www.nicepng.com/png/full/11-118333_graphic-lower-third-transparent-lower-third-png.png" id=lowerTh class=imgCnvs>
-            <img src="https://pngimage.net/wp-content/uploads/2018/06/mancha-de-tinta-png-5.png" id=mancha1 class=imgCnvs>
-            <img src="https://i.dlpng.com/static/png/5449452-manchas-de-tinta-preta-png-vector-clipart-psd-peoplepngcom-manchas-png-500_380_preview.png" id=mancha2 class=imgCnvs>
-            <img src="kiara.jpg" id=kiara class=imgCnvs>
-            <img src="https://purepng.com/public/uploads/medium/purepng.com-internet-icon-android-kitkatsymbolsiconsapp-iconsandroid-kitkatandroid-44-721522597644ktexy.png" id=imgRede class=imgCnvs>
-            <img id=testeBingo>
         </main>
         <footer>
             <p class=rodape>Criado por <b>Ricardo Augusto Müller Germani</b>, abril de 2020</p>
@@ -243,7 +233,7 @@
     <script type="text/javascript">
         const srcIcon = "https://www.pinclipart.com/picdir/big/0-9831_icon-icone-simbols-simbolo-certo-clipart-clip-art.png";
         document.getElementById("imgIconObj").src = srcIcon;
-        /*var navigMobile = new Array("Android", "iPhone", "webOS", "iPad", "BlackBerry", "IEMobile", "Opera Mini");
+        var navigMobile = new Array("Android", "iPhone", "webOS", "iPad", "BlackBerry", "IEMobile", "Opera Mini");
         var isMobile = false;
         for(var t = 0; t < navigMobile.length; t++) {
             if(navigator.userAgent.indexOf(navigMobile[t]) >= 0) {
@@ -251,10 +241,13 @@
                 break;
             }
         } if(isMobile == false) {
-
-        } else if(isMobile == true) {
-
-        }*/ function resizeObjs() {
+            setInterval(function() {
+                var pTop = document.getElementById("pEncerr").style.marginTop;
+                if(pTop !== "10px") {
+                    document.getElementById("pEncerr").style.marginTop = -document.getElementById("desafiar").offsetHeight + "px";
+                }
+            }, 30);
+        } function resizeObjs() {
             var numWidth = window.innerWidth;
             var widRes;
             if(numWidth > 834) {
@@ -264,13 +257,7 @@
             } widRes--;
             document.getElementById("title").style.width = widRes + "px";
             document.getElementsByTagName("main")[0].style.width = (widRes - 8) + "px";
-        } setInterval(function() {
-            var pTop = document.getElementById("pEncerr").style.marginTop;
-            if(pTop !== "10px") {
-                document.getElementById("pEncerr").style.marginTop = -document.getElementById("desafiar").offsetHeight + "px";
-            }
-        }, 30);
-        for(var k = 1; k <= 4; k++) {
+        } for(var k = 1; k <= 4; k++) {
             var linhaHTML = "<tr>";
             for(var n = 1; n <= 4; n++) {
                 linhaHTML += "<th><img src='" + srcIcon + "' class=iconRight><p class=pTh></p></th>"
@@ -625,7 +612,7 @@
                     if(y !== nameSplit.length - 1) {
                         namedownl += "-";
                     }
-                } abingo.href = document.getElementById("cnvsBingo").toDataURL();
+                } abingo.href = document.getElementById("cnvsBingo").toDataURL("image/jpeg", 1);
                 abingo.download = namedownl;
                 abingo.click();
             }
