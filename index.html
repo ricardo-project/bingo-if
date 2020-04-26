@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bingo do IFSul</title>
+        <meta charset=UTF-8>
+        <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Merriweather">
+        <link rel="shortcut icon" type="image/x-icon" href="https://image.flaticon.com/icons/png/512/25/25617.png">
+    </head>
+    <style>
+        body {
+            background: rgb(50,50,50);
+            margin-left: -8px;
+            padding-left: 8px;
+        } th {
+            background-color: brown;
+            font-weight: bold;
+            font-family: Roboto;
+            color: navajowhite;
+            padding: 10px;
+            font-size: 20px;
+            filter: brightness(1) contrast(1);
+            border-radius: 10px;
+            vertical-align: top;
+            box-shadow: black 3px 3px 3px;
+            text-shadow: black 2px 2px 2px;
+            transition: filter 0.15s, background-color 0.25s;
+        } th:hover {
+            filter: brightness(0.8) contrast(1.2);
+        } table {
+            margin-left: auto;
+            margin-right: auto;
+            background-color: sandybrown;
+            border: 15px outset sienna;
+            border-spacing: 15px;
+            border-radius: 40px;
+            box-shadow: rgba(0,0,0,0.7) 4px 4px 3px;
+            transform: scale(0);
+            padding: 20px;
+            margin-top: -80px;
+            transition: all 0.35s ease;
+        } #title {
+            font-size: 100px;
+            font-family: Roboto;
+            color: white;
+            margin-top: -8px;
+            margin-left: -8px;
+            margin-right: -8px;
+            margin-bottom: 0px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: tomato;
+            border-bottom: 10px solid sandybrown;
+        } th, input[type=button], .imgfinal {
+            cursor: pointer;
+        } b {
+            color: sandybrown;
+            text-shadow: black 3px 3px 4px;
+            transition: all 0.2s ease; 
+        } b:hover {
+            filter: brightness(0.7);
+        } #iconIF {
+            height: 100px;
+            filter: brightness(1.1) contrast(1.3) drop-shadow(black 2px 2px 2px);
+        } input[type=button] {
+            font-family: Merriweather;
+            font-size: 30px;
+            padding: 10px;
+            border: 5px outset sandybrown;
+            box-shadow: black 3px 3px 3px;
+            margin: 3px;
+            background-color: indianred;
+            color: white;
+            font-weight: bold;
+            border-radius: 26px;
+            text-shadow: black 2px 2px 2px;
+            transition: all 0.3s ease;
+        } input[type=button]:hover {
+            color: silver;
+            background-color: salmon;
+            border-color: saddlebrown;
+        } .iconRight {
+            width: 0px;
+            height: 0px;
+            margin-left: -85px;
+            margin-top: -10px;
+            filter: drop-shadow(black 2px 2px 2px);
+            position: absolute;
+            transition: all 0.25s ease;
+        } .pTh {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            display: flex;
+            align-items: center;
+        } th, .pTh {
+            width: 150px;
+            height: 150px;
+        } #desafiar {
+            margin-top: 20px;
+            margin-right: auto;
+            margin-left: auto;
+            color: white;
+            background-color: slateblue;
+            transform: scale(0);
+            border-radius: 20px;
+            box-shadow: rgba(0,0,0,0.8) 4px 4px 2px;
+            padding: 20px;
+            transition: all 0.35s ease;
+        } input[type=text] {
+            width: 350px;
+            font-family: Merriweather;
+            color: white;
+            padding: 5px;
+            border: none;
+            box-shadow: 0px 0px 5px black inset;
+            border-radius: 5px;
+            text-shadow: black 1px 1px 2px;
+            background-color: transparent;
+        } .pBingo {
+            font-family: Merriweather;
+        } #link {
+            color: sandybrown;
+        } footer {
+            padding-top: 30px;
+            padding-bottom: 50px;
+        } .txtCnt, footer, #title {
+            text-align: center;
+        } .rodape {
+            font-family: Roboto;
+            color: silver;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-shadow: black 3px 3px 3px;
+        } .imgfinal {
+            width: cover;
+            transition: all 0.5s ease;
+            margin-left: 10px;
+            margin-right: 10px;
+            filter: contrast(1) drop-shadow(orange 1px 1px 1px);
+        } .imgfinal:hover {
+            filter: contrast(1.5) drop-shadow(orange 1px 1px 1px);
+        } .butt {
+            font-size: 14px;
+        } main {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), tomato;
+            margin-right: -8px;
+            box-shadow: 0px 0px 20px black inset;
+            padding-bottom: 30px;
+        } .imgCnvs, canvas {
+            display: none;
+        } @media only screen and (min-width: 0px) {
+            .imgfinal {
+                height: 70px;
+            } .imgfinal:hover {
+                height: 100px;
+            } #desafiar {
+                width: 700px;
+            } li {
+                font-size: 26px;
+            } input[type=text] {
+                font-size: 18px;
+            } #resultBingo {
+                font-size: 26px;
+            } #pInsName {
+                font-size: 18px;
+            }
+        } @media only screen and (min-width: 842px) {
+            .imgfinal {
+                height: 130px;
+            } .imgfinal:hover {
+                height: 180px;
+            } #desafiar {
+                width: 700px;
+            } li {
+                font-size: 26px;
+            } input[type=text] {
+                font-size: 18px;
+            } #resultBingo {
+                font-size: 26px;
+            } #pInsName {
+                font-size: 18px;
+            }
+        } @media only screen and (min-width: 1100px) {
+            .imgfinal {
+                height: 130px;
+            } .imgfinal:hover {
+                height: 180px;
+            } #desafiar {
+                width: 1000px;
+            } li {
+                font-size: 30px;
+            } input[type=text] {
+                font-size: 22px;
+            } #resultBingo {
+                font-size: 34px;
+            } #pInsName {
+                font-size: 22px;
+            }
+        }
+    </style>
+    <body onload="resizeObjs()" onresize="resizeObjs()">
+        <p id=title><b style="cursor: pointer">Bingo do <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Instituto_Federal_Marca_2015.svg/1200px-Instituto_Federal_Marca_2015.svg.png" id=iconIF></b></p>
+        <main>
+            <p id=pIniciar class=txtCnt style="transform: scale(1); padding-top: 20px; margin-top: 0px"><input type=button id=inicio value="Começar Bingo!" onclick="iniciarBingo(false)"></p>
+            <table id=tabela></table>
+            <section id=desafiar>
+                <p id=resultBingo class=pBingo style="text-align: center"></p>
+                <article id=insNames>
+                    <p class=pBingo id=pInsName>Insira seu nome e desafie para outras pessoas! Máximo de 5 pessoas e campos vazios serão desconsiderados! <input type=text id=nameUsu placeholder="Insira seu nome aqui!" maxlength=15></p>
+                    <ul id=listaPerson>
+                        <li><input type=text placeholder="Digite o nome da pessoa" id=nome1 maxlength=15 oninput="valorFunc(value, 0)"> <input type=button value="Limpar Dados" style="font-size: 22px; padding: 4px; border-width: 4px" onclick="limparCampo(1)"></li>
+                    </ul>
+                    <p style="text-align: center"><input type=button value="Adicionar mais uma pessoa" id=buttAdd onclick="addPerson()"> <input type=button value="Baixar imagem do bingo!" onclick="bingo()"></p>
+                </article>
+            </section>
+            <p id=pEncerr class=txtCnt style="transform: scale(0); margin-top: -300px"><input type=button value="Baixar imagem do bingo!" id=buttBingo onclick="desafiar(1)" class=butt> <input type=button value="Recomeçar tudo!" id=buttRec onclick="if(condCanChg == true) { iniciarBingo(true) }" class=butt></p>
+            <canvas width=890 height=1300 id=cnvsBingo></canvas>
+            <a id=abingo></a>
+            <img id=imgIconObj class=imgCnvs>
+            <img src="https://pt.seaicons.com/wp-content/uploads/2015/08/Patent-Pen-icon.png" id=imgCaneta class=imgCnvs>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Redx2.svg/675px-Redx2.svg.png" id=XIcon class=imgCnvs>
+            <img src="https://www.curysolucoes.com.br/wp-content/uploads/2018/01/1418465615_698868-icon-132-cloud-512-512x372.png" id=nuvemIcon class=imgCnvs>
+            <img src="https://images.vexels.com/media/users/3/127092/isolated/preview/72f9c59cf2f33fadae72fcc61f8e691c-mochila-camping---cone-by-vexels.png" id=imgBag class=imgCnvs>
+            <img src="https://www.nicepng.com/png/full/11-118333_graphic-lower-third-transparent-lower-third-png.png" id=lowerTh class=imgCnvs>
+            <img src="https://pngimage.net/wp-content/uploads/2018/06/mancha-de-tinta-png-5.png" id=mancha1 class=imgCnvs>
+            <img src="https://i.dlpng.com/static/png/5449452-manchas-de-tinta-preta-png-vector-clipart-psd-peoplepngcom-manchas-png-500_380_preview.png" id=mancha2 class=imgCnvs>
+            <img src="kiara.jpg" id=kiara class=imgCnvs>
+            <img src="https://purepng.com/public/uploads/medium/purepng.com-internet-icon-android-kitkatsymbolsiconsapp-iconsandroid-kitkatandroid-44-721522597644ktexy.png" id=imgRede class=imgCnvs>
+            <img id=testeBingo>
+        </main>
+        <footer>
+            <p class=rodape>Criado por <b>Ricardo Augusto Müller Germani</b>, abril de 2020</p>
+            <span title="IFSul"><a href="http://passofundo.ifsul.edu.br/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Instituto_Federal_Sul-rio-grandense_-_Marca_Vertical_2015.svg/1200px-Instituto_Federal_Sul-rio-grandense_-_Marca_Vertical_2015.svg.png" class=imgfinal></a></span> <!--Instituto Federal Sul-Rio-Grandense-->
+            <span title="HTML"><a href="https://html.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" class=imgfinal></a></span> <!--HTML 5-->
+            <span title="JavaScript"><a href="https://www.javascript.com/"><img src="http://luizricardo.org/wordpress/wp-content/upload-files/2014/11/js-logo-badge-512.png" class=imgfinal></a></span> <!--JavaScript-->
+            <span title="CSS"><a href="https://www.w3schools.com/css/"><img src="https://logodownload.org/wp-content/uploads/2017/04/css-3-logo-1.png" class=imgfinal></a></span> <!--CSS 3-->
+            <span title="W3School"><a href="https://www.w3schools.com/"><img src="https://i0.wp.com/amai-lab.com/wp-content/uploads/2017/12/W3Schools_logo1.png?fit=500%2C200&ssl=1" class=imgfinal></a></span> <!--W3School-->
+            <p class=rodape><b>Nota:</b> o Bingo do IFSul não é oficialmente da respectiva instituição. O nome da página é atribuída à instituição onde estuda o criador desta página.</p>
+        </footer>
+    </body>
+    <script type="text/javascript">
+        const srcIcon = "https://www.pinclipart.com/picdir/big/0-9831_icon-icone-simbols-simbolo-certo-clipart-clip-art.png";
+        document.getElementById("imgIconObj").src = srcIcon;
+        /*var navigMobile = new Array("Android", "iPhone", "webOS", "iPad", "BlackBerry", "IEMobile", "Opera Mini");
+        var isMobile = false;
+        for(var t = 0; t < navigMobile.length; t++) {
+            if(navigator.userAgent.indexOf(navigMobile[t]) >= 0) {
+                isMobile = true;
+                break;
+            }
+        } if(isMobile == false) {
+
+        } else if(isMobile == true) {
+
+        }*/ function resizeObjs() {
+            var numWidth = window.innerWidth;
+            var widRes;
+            if(numWidth > 834) {
+                widRes = numWidth - 8;
+            } else {
+                widRes = 834;
+            } widRes--;
+            document.getElementById("title").style.width = widRes + "px";
+            document.getElementsByTagName("main")[0].style.width = (widRes - 8) + "px";
+        } setInterval(function() {
+            var pTop = document.getElementById("pEncerr").style.marginTop;
+            if(pTop !== "10px") {
+                document.getElementById("pEncerr").style.marginTop = -document.getElementById("desafiar").offsetHeight + "px";
+            }
+        }, 30);
+        for(var k = 1; k <= 4; k++) {
+            var linhaHTML = "<tr>";
+            for(var n = 1; n <= 4; n++) {
+                linhaHTML += "<th><img src='" + srcIcon + "' class=iconRight><p class=pTh></p></th>"
+            } linhaHTML += "</tr>";
+            tabela.innerHTML += linhaHTML;
+        } var allTh = document.getElementsByTagName("th");
+        var isTrue = new Array(allTh.length);
+        var allpTh = document.getElementsByClassName("pTh");
+        var allIcon = document.getElementsByClassName("iconRight");
+        var valorInput = [""];
+        for(var s = 0; s < isTrue.length; s++) {
+            isTrue[s] = 0;
+        } var bGrdTh = new Array("brown", "forestgreen");
+        for(var r = 0; r < allTh.length; r++) {
+            const consR = r;
+            allTh[r].onclick = function() {
+                if(condOptions == true) {
+                    isTrue[consR] = (1 - isTrue[consR]);
+                    allTh[consR].style.backgroundColor = bGrdTh[isTrue[consR]];
+                    var whIcon = isTrue[consR]*40;
+                    allIcon[consR].style.width = whIcon + "px";
+                    allIcon[consR].style.height = whIcon + "px";
+                    allIcon[consR].style.marginTop = -(10 + whIcon/2) + "px";
+                    allIcon[consR].style.marginLeft = -(85 + whIcon/2) + "px";
+                }
+            };
+        } var options = new Array("Você já foi para a coordenação por fazer besteira", "Brigou com o(a) professor(a) por um motivo fútil (não vale celular para falar com familiar)", "Seu(sua) amigo(a) foi pra coordenação por algo que você fez", "Foi chamado por um(a) professor(a) como 'pior aluno'", "Passou em todos os anos até agora, e sem fazer recuperação!", "Usou uma sacola de plástico na cabeça durante a aula!", "Fugiu da escola durante o recreio e não foi pego", "Correu atrás do ônibus ao sair da escola e não conseguiu alcançá-lo", "Seu pai e/ou mãe e/ou responsável foi chamado por você ser um aluno muito bom!", "Namorou com mais de um(a) colega ao mesmo tempo", "Foi motivo de piada na turma por um vídeo vazado seu!", "Levou ovo e farinha na cara no dia do seu aniversário", "Participou do concurso de talentos da escola!", "Participou das interséries e seu time venceu!", "Foi pra escola sem uniforme (caso o uniforme for obrigatório)", "Participou/criou uma banda musical com seus colegas", "Brigou diretamente com o(a) diretor(a) e/ou com o coordenador(a)", "Furou a fila da merenda", "Esqueceu de levar a mochila para a escola!", "Ficou doente e acabou espalhando para seus colegas", "Mandou/recebeu cartas para/de seus colegas durante a aula", "Foi suspenso por alguns dias", "Gazeou aula para jogar na quadra", "Vomitou na escola", "Brigou com, pelo menos, um colega no meio de uma multidão", "Falou na frente do professor(a) que você não gostava dele(a)", "Atuou como presidente e/ou como vice presidente da turma", "Participou do grêmio estudantil");
+        var breakLine = new Array([4,6,8], [3,5,8,11,14], [1,4,5,8], [3,4,5], [2,5,9,10], [2,4,6,8], [3,5,9], [3,6,10,11], [3,5,7,9,12,14], [2,5,7], [3,6,9], [3,6,10], [2,4,6], [2,5], [3,5,7,9], [1,3,5], [1,2,4,6,8], [4], [2,5], [3,4,6], [1,3,5], [2], [2,5], [2], [3,5,8], [3,5,8], [2,4,6,8], [2,3]);
+        var optionsAct;
+        var optionsAnt;
+        var setChangeOpt;
+        var contSetChg;
+        var condCanChg = true;
+        var condOptions = true;
+        function valorFunc(newvalue, newnum) {
+            valorInput[newnum] = newvalue;
+        } function iniciarBingo(newcond) {
+            if(newcond == false) {
+                tabela.style.transform = "scale(1)";
+                pIniciar.style.transform = "scale(0)";
+                pEncerr.style.transform = "scale(1)";
+            } else if(newcond == true) {
+                desafiar(0);
+                for(var w = 0; w < allTh.length; w++) {
+                    allTh[w].style.backgroundColor = "brown";
+                    allIcon[w].style.width = "0px";
+                    allIcon[w].style.height = "0px";
+                    allIcon[w].style.marginTop = "-10px";
+                    allIcon[w].style.marginLeft = "-85px";
+                    isTrue[w] = 0;
+                } resultBingo.innerHTML = "";
+                insNames.style.display = "block";
+                numList = 1;
+                valorInput = [""];
+                listaPerson.innerHTML = liHTML(1);
+                nameUsu.value = "";
+                optionsAnt = new Array(optionsAct.length);
+                for(var s = 0; s < optionsAnt.length; s++) {
+                    optionsAnt[s] = optionsAct[s];
+                }
+            } var optionsTab = new Array(options.length);
+            for(var j = 0; j < options.length; j++) {
+                optionsTab[j] = options[j];
+            } optionsAct = new Array(allTh.length);
+            for(var n = 0; n < allTh.length; n++) {
+                var quantOptTab = options.length - n;
+                var numAleat = Math.floor(Math.random()*quantOptTab);
+                numAleat = numAleat - Math.pow(0, quantOptTab - numAleat);
+                allpTh[n].textContent = optionsTab[numAleat];
+                for(var u = 0; u < options.length; u++) {
+                    if(options[u] == optionsTab[numAleat]) {
+                        optionsAct[n] = u;
+                    }
+                } optionsTab.splice(numAleat, 1);
+            } if(newcond == true) {
+                contSetChg = 0;
+                condCanChg = false;
+                condOptions = false;
+                setChangeOpt = setInterval(function() {
+                    contSetChg++;
+                    if(contSetChg <= 15) {
+                        for(var b = 0; b < allpTh.length; b++) {
+                            allpTh[b].textContent = options[optionsAnt[b]].substring(0, Math.floor(options[optionsAnt[b]].length*(15 - contSetChg)/15));
+                        }
+                    } else if(contSetChg > 15 && contSetChg <= 30) {
+                        for(var b = 0; b < allpTh.length; b++) {
+                            allpTh[b].textContent = options[optionsAct[b]].substring(0, Math.floor(options[optionsAct[b]].length*(contSetChg - 15)/15));
+                        } if(contSetChg == 30) {
+                            clearInterval(setChangeOpt);
+                            condCanChg = true;
+                            condOptions = true;
+                        }
+                    }
+                }, 20);
+            }
+        } var numList = 1;
+        function limparCampo(newNum) {
+            document.getElementById("nome" + newNum).value = "";
+            document.getElementById("nome" + newNum).focus();
+            valorInput[newNum - 1] = "";
+        } function liHTML() {
+            return ('<li><input type=text placeholder="Digite o nome da pessoa" id=nome' + numList + ' maxlength=15 oninput="valorFunc(value, ' + (numList - 1) + ')"> <input type=button value="Limpar Dados" style="font-size: 22px; padding: 4px; border-width: 4px" onclick="limparCampo(' + numList + ')"></li>');
+        } function addPerson() {
+            numList++;
+            listaPerson.innerHTML += liHTML(numList);
+            for(var k = 1; k <= valorInput.length; k++) {
+                document.getElementById("nome" + k).value = valorInput[k - 1];
+            } valorInput.push();
+            limparCampo(numList);
+            if(numList == 5) {
+                document.getElementById("buttAdd").style.display = "none";
+            }
+        } var motivos = new Array("O seu nome não foi devidamente inserido no respectivo campo de entrada.", "Nenhum nome de, pelo menos, uma pessoa para participar do bingo foi inserida nos respectivos campos.");
+        var colorsBck = new Array("brown", "forestgreen");
+        function bingo() {
+            var name1 = txtFunc(nameUsu.value);
+            var isDownload = true;
+            var quantMot = 0;
+            if(name1 == "") {
+                isDownload = false;
+                quantMot++;
+            } var isName = false;
+            var nameValid = new Array();
+            for(var t = 1; t <= numList; t++) {
+                var newName = txtFunc(document.getElementById("nome" + t).value);
+                if(newName !== "") {
+                    isName = true;
+                    nameValid.push(nameTxt(newName));
+                }
+            } if(isName == false) {
+                isDownload = false;
+                quantMot++;
+            } if(isDownload == false) {
+                var consMens = "";
+                if(quantMot > 1) {
+                    consMens = "s";
+                } var mensagem = "O download da imagem será impossibilitado pelo" + consMens + " seguinte" + consMens + " motivo" + consMens + ":\n";
+                for(var u = 1; u <= quantMot; u++) {
+                    mensagem += " - " + motivos[u - 1] + "\n";
+                } mensagem += "Insira os dados válidos e clique novamente no botão!";
+                alert(mensagem);
+            } else if(isDownload == true) {
+                condOptions = false;
+                insNames.style.display = "none";
+                var result = nameTxt(name1) + " convoca ";
+                for(var k = 0; k < nameValid.length; k++) {
+                    result += nameValid[k];
+                    if(k == nameValid.length - 2) {
+                        result += " e ";
+                    } else if(k < nameValid.length - 2) {
+                        result += ", ";
+                    }
+                } var consPlural = "";
+                if(numList > 1) {
+                    consPlural = "em";
+                } result += " para fazer" + consPlural + " o bingo do IFSul! Link: <b>ricardo-project.github.io/bingo-ifsul</b>";
+                document.getElementById("resultBingo").innerHTML = result;
+                var cnvsObj = document.getElementById("cnvsBingo");
+                var cnvs = cnvsObj.getContext("2d");
+                cnvs.beginPath();
+                var bckLin = cnvs.createLinearGradient(0, 0, 0, cnvsObj.height);
+                for(var g = 0; g <= 1; g++) {
+                    bckLin.addColorStop(g, "rgb(" + Math.floor(204/(g + 1)) + "," + Math.floor(79/(g + 1)) + "," + Math.floor(57/(g + 1)) + ")");
+                } cnvs.fillStyle = bckLin;
+                cnvs.fillRect(0, 0, cnvsBingo.width, cnvsBingo.height);
+                var bckGrd = cnvs.createRadialGradient(75, 200, 10, 200, 110, 300);
+                for(var g = 0; g <= 1; g++) {
+                    var vRGB = 255 - 100*g;
+                    bckGrd.addColorStop(g, "rgb(" + vRGB + "," + vRGB + "," + vRGB + ")");
+                } bckGrd.addColorStop(0, "white");
+                bckGrd.addColorStop(1, "rgb(155,155,155)");
+                cnvs.fillStyle = bckGrd;
+                cnvs.strokeStyle = "rgb(100,100,100)";
+                cnvs.font = "bold 130px Roboto";
+                cnvs.textAlign = "left";
+                cnvs.filter = "invert(0.75)";
+                //cnvs.drawImage(document.getElementById("mancha1"), 500, -30, 270, 270);
+                cnvs.filter = "invert(0)";
+                cnvs.shadowColor = "black";
+                cnvs.shadowOffsetX = 4;
+                cnvs.shadowOffsetY = 4;
+                cnvs.shadowBlur = 3;
+                cnvs.lineWidth = 1;
+                cnvs.fillText("BINGO", 150, 130);
+                cnvs.shadowColor = "transparent";
+                cnvs.strokeText("BINGO", 150, 130);
+                cnvs.beginPath();
+                cnvs.shadowColor = "black";
+                cnvs.shadowOffsetX = 2;
+                cnvs.shadowOffsetY = 2;
+                cnvs.shadowBlur = 2;
+                cnvs.fillStyle = "maroon";
+                cnvs.filter = "brightness(2.4) contrast(0.9)";
+                cnvs.arc(600, 25, 17, 0, 2*Math.PI, false);
+                cnvs.fill();
+                bckGrd = cnvs.createRadialGradient(600, 25, 20, 600, 25, 350);
+                for(var d = 0; d <= 1; d++) {
+                    bckGrd.addColorStop(d, "rgb(" + Math.floor(34/(2*d + 1)) + "," + Math.floor(139/(2*d + 1)) + "," + Math.floor(34/(d + 1)) + ")");
+                } cnvs.fillStyle = bckGrd;
+                cnvs.filter = "brightness(1.3) contrast(1.1)";
+                for(var s = 0; s <= 2; s++) {
+                    for(var t = 0; t <= 3; t++) {
+                        if((s == 0 && t !== 0) || s == 1 || (s == 2 && (t % 2) == 0)) {
+                            var pXQuadr = 590 + 38*s;
+                            var pYQuadr = 15 + 38*t;
+                            cnvs.beginPath();
+                            for(var u = 0; u <= 3; u++) {
+                                var cX = 20*(potzero(u, 1) + potzero(u, 2));
+                                var cY = 20*Math.floor(u/2);
+                                cnvs.arc(pXQuadr + cX, pYQuadr + cY, 5, angleFunc(u, 2, 0), angleFunc(u, 2, 1), false);
+                            } cnvs.fill();
+                        }
+                    }
+                } cnvs.shadowOffsetX = 2;
+                cnvs.shadowOffsetY = 2;
+                cnvs.shadowBlur = 2;
+                cnvs.fillStyle = "rgb(225,225,225)";
+                cnvs.filter = "brightness(1.2) contrast(1.3)";
+                //cnvs.drawImage(document.getElementById("iconIF"), 580, 5, 130, 170);
+                cnvs.font = "bold 50px Roboto";
+                cnvs.fillStyle = "rgb(225,225,225)";
+                cnvs.fillText("DO", 525, 100);
+                //cnvs.drawImage(document.getElementById("imgBag"), 60, 60, 140, 140);
+                cnvs.shadowColor = "transparent";
+                cnvs.filter = "invert(0.5)";
+                //cnvs.drawImage(document.getElementById("mancha2"), 700, 950, 400, 304);
+                //cnvs.drawImage(document.getElementById("mancha3"), -40, 920, 220, 220);
+                cnvs.filter = "invert(0)";
+                cnvs.shadowColor = "rgba(0,0,0,0.7)";
+                for(var w = 0; w <= 1; w++) {
+                    cnvs.beginPath();
+                    cnvs.fillStyle = "rgb(" + arrend(133, w) + "," + arrend(69, w) + "," + arrend(19, w) + ")";
+                    for(var k = 0; k <= 2; k++) {
+                        cnvs.arc(positFunc(65 + 760*potzero(k, 1), w), positFunc(65 + 760*Math.floor(k/2), w) + 150, 40, angleFunc(k, w, 0), angleFunc(k, w, 1), false);
+                    } cnvs.fill();
+                } cnvs.fillStyle = "sandybrown";
+                cnvs.shadowColor = "transparent";
+                cnvs.textAlign = "center";
+                cnvs.beginPath();
+                for(var e = 0; e <= 3; e++) {
+                    cnvs.arc(65 + 760*(potzero(e, 1) + potzero(e, 2)), 65 + 760*Math.floor(e/2) + 150, 25, angleFunc(e, 2, 0), angleFunc(e, 2, 1), false);
+                } cnvs.fill();
+                cnvs.shadowColor = "black";
+                var imgObj = document.getElementById("imgIconObj");
+                for(var y = 0; y < allTh.length; y++) {
+                    cnvs.fillStyle = colorsBck[isTrue[y]];
+                    var positX = 80 + 186*(y % 4);
+                    var positY = 80 + 186*(Math.floor(y/4));
+                    cnvs.font = "bold 20px Roboto";
+                    cnvs.shadowColor = "black";
+                    cnvs.shadowOffsetX = 3;
+                    cnvs.shadowOffsetY = 3;
+                    cnvs.shadowBlur = 3;
+                    cnvs.beginPath();
+                    for(var z = 0; z <= 3; z++) {
+                        cnvs.arc(positX + 150*(potzero(z, 1) + potzero(z, 2)) + 10, positY + 150*Math.floor(z/2) + 160, 10, angleFunc(z, 2, 0), angleFunc(z, 2, 1), false);
+                    } cnvs.fill();
+                    cnvs.shadowOffsetX = 2;
+                    cnvs.shadowOffsetY = 2;
+                    cnvs.shadowBlur = 2;
+                    cnvs.fillStyle = "navajowhite";
+                    var strgOpt = options[optionsAct[y]].split(" ");
+                    var conjBreak = breakLine[optionsAct[y]];
+                    for(var e = 0; e <= conjBreak.length; e++) {
+                        var txtLine = "";
+                        var varInic;
+                        if(e == 0) {
+                            varInic = 0;
+                        } else {
+                            varInic = conjBreak[e - 1];
+                        } var varFinal;
+                        if(e == conjBreak.length) {
+                            varFinal = strgOpt.length;
+                        } else {
+                            varFinal = conjBreak[e];
+                        } for(var r = varInic; r < varFinal; r++) {
+                            txtLine += strgOpt[r];
+                            if(r !== varFinal - 1) {
+                                txtLine += " ";
+                            }
+                        } cnvs.fillText(txtLine, positX + 85, positY + 231 - 12*(breakLine[optionsAct[y]].length + 1) + 24*(e + 1), 170);
+                    } if(isTrue[y] == 0) {
+                        cnvs.fillStyle = "rgb(255, 65, 65)";
+                        cnvs.font = "70px Roboto";
+                        cnvs.shadowColor = "rgb(0,0,0,0.7)";
+                        cnvs.fillText("X", positX + 85, positY + 260, 170);
+                    } else if(isTrue[y] == 1) {
+                        cnvs.fillStyle = "darkgreen";
+                        cnvs.beginPath();
+                        cnvs.arc(positX, positY + 150, 20, 0, 2*Math.PI, false);
+                        cnvs.fill();
+                        cnvs.fillStyle = "green";
+                        cnvs.beginPath();
+                        cnvs.shadowColor = "transparent";
+                        cnvs.arc(positX, positY + 150, 16, 0, 2*Math.PI, false);
+                        cnvs.fill();
+                        cnvs.fillStyle = "white";
+                        cnvs.font = "32px Times New Roman";
+                        cnvs.fillText("✓", positX, positY + 163, 32);
+                    }
+                } //cnvs.drawImage(document.getElementById("imgCaneta"), 20, -20, 200, 200);
+                cnvs.font = "bold 50px Merriweather";
+                cnvs.textAlign = "center";
+                cnvs.fillStyle = "rgb(210,210,210)";
+                cnvs.fillText(nameTxt(name1) + " convoca...", cnvsObj.width/2, 1030);
+                cnvs.font = "40px Merriweather";
+                cnvs.fillText("para participar do Bingo do IFSul!", cnvsObj.width/2, 1240);
+                bckGrd = cnvs.createRadialGradient(200, 1270, 20, 200, 1270, 700);
+                bckGrd.addColorStop(0, "salmon");
+                bckGrd.addColorStop(1, "saddlebrown");
+                cnvs.fillStyle = bckGrd;
+                cnvs.beginPath();
+                cnvs.lineTo(10, 1300);
+                cnvs.lineTo(50, 1260);
+                cnvs.lineTo(700, 1260);
+                cnvs.lineTo(660, 1300);
+                cnvs.fill();
+                bckGrd = cnvs.createRadialGradient(350, 1270, 20, 350, 1270, 750);
+                for(var k = 0; k <= 1; k++) {
+                    var vRGB2 = 210 - 185*k;
+                    bckGrd.addColorStop(k, "rgb(" + vRGB2 + "," + vRGB2 + "," + vRGB2 + ")");
+                } cnvs.fillStyle = bckGrd;
+                cnvs.textAlign = "left";
+                cnvs.font = "30px Merriweather";
+                cnvs.fillText("Link: ricardo-project.github.io/bingo-ifsul", 40, 1285);
+                bckGrd = cnvs.createRadialGradient(cnvsObj.width/2, 1050, 20, cnvsObj.width/2, 1200, 400);
+                for(var i = 0; i <= 1; i++) {
+                    bckGrd.addColorStop(i, "rgb(" + (244 - 105*i) + "," + (164 - 95*i) + "," + (96 - 77*i) + ")");
+                    //Área mais clara: "sandybrown"; Área mais escura: "saddlebrown" ---> Valores em RGB
+                } cnvs.fillStyle = bckGrd;
+                var sizePart = 100*potzero(nameValid.length, 1) + Math.floor(140/nameValid.length)*(1 - potzero(nameValid.length, 1));
+                cnvs.font = "bold " + sizePart + "px Merriweather";
+                cnvs.textAlign = "center";
+                for(var t = 0; t < nameValid.length; t++) {
+                    cnvs.fillText(nameValid[t], cnvsObj.width/2, 1030 + (170 - sizePart*nameValid.length)/2 + sizePart*(t + 1), cnvsObj.width);
+                } var percent = 0;
+                for(var r = 0; r < isTrue.length; r++) {
+                    if(isTrue[r] == true) {
+                        percent++;
+                    }
+                } var resPercent = "Você fez " + String(Math.floor(2500*percent/4)/100) + "% das opções do Bingo";
+                for(var g = 0; g <= Math.floor(percent/4); g++) {
+                    resPercent += "!"
+                } cnvs.font = "bold 45px Roboto";
+                cnvs.fillStyle = "rgb(" + (255 - 25*percent/4) + "," + (155 + 25*percent/4) + ",155)";
+                cnvs.filter = "brightness(1.1) contrast(1.4)";
+                cnvs.fillText(resPercent, cnvsObj.width/2, 200, cnvsObj.width);
+                var namedownl = "bingo-teste-";
+                var nameSplit = name1.split(" ");
+                for(var y = 0; y < nameSplit.length; y++) {
+                    namedownl += nameSplit[y].toLowerCase();
+                    if(y !== nameSplit.length - 1) {
+                        namedownl += "-";
+                    }
+                } abingo.href = document.getElementById("cnvsBingo").toDataURL();
+                abingo.download = namedownl;
+                abingo.click();
+            }
+        } function angleFunc(newvalor1, newvalor2, newvalor3) {
+            //Se "newvalor3" for zero, retornar ângulo inicial; Caso for um, retornar ângulo final!
+            var result = Math.PI*(1 + newvalor1/2);
+            if(newvalor2 <= 1) {
+                result += 3*Math.PI*potzero(newvalor1, 2)/4 - Math.PI*newvalor2 + Math.PI*newvalor3/(2 + 2*Math.floor((newvalor1 + 1)/2));
+            } else if(newvalor2 == 2) {
+                result += Math.PI*newvalor3/2;
+            } return (result % (2*Math.PI));
+        } function arrend(valor1, valor2) {
+            return Math.floor(valor1/(valor2 + 1));
+        } function potzero(valor1, valor2) {
+            return Math.pow(0, Math.abs(valor1 - valor2));
+        } function positFunc(valor1, valor2) {
+            return (890*valor2 + Math.pow(-1, valor2)*valor1);
+        } function sign(valor) {
+            valor = parseFloat(valor);
+            if(isNaN(valor)) {
+                return undefined;
+            } else {
+                return (valor/(Math.abs(valor) + Math.pow(0, Math.abs(valor))) + Math.pow(0, Math.abs(valor)));
+            }
+        } function desafiar(newnum) {
+            document.getElementById("desafiar").style.transform = "scale(" + newnum + ")";
+            document.getElementById("buttBingo").style.transform = "scale(" + (1 - newnum) + ")";
+            document.getElementById("buttRec").style.marginLeft = (-360*newnum + 3*(1 - newnum)) + "px";
+            const consnewnum = newnum;
+            setTimeout(function() {
+                var altura = document.getElementById("desafiar").offsetHeight;
+                pEncerr.style.marginTop = (10*newnum - altura*(1 - newnum)) + "px";
+            }, 50);
+        } function txtFunc(valor) {
+            var result = "";
+            var condspace = false;
+            var numspace = false;
+            var limite = -1;
+            for(var m = valor.length - 1; m >= 0; m--) {
+                if(valor.charAt(m) !== " ") {
+                    limite = m;
+                    break;
+                }
+            } for(var n = 0; n <= limite; n++) {
+                if(valor.charAt(n) == " ") {
+                    if(condspace == true) {
+                        if(numspace == false) {
+                            result += " ";
+                        } numspace += Math.pow(0, numspace);
+                    }
+                } else if(valor.charAt(n) !== " ") {
+                    condspace += Math.pow(0, condspace);
+                    result += valor.charAt(n);
+                    numspace = 0;
+                }
+            } return result;
+        } function nameTxt(valorname) {
+            var nameSpace = valorname.split(" ");
+            var resultFinal = "";
+            for(var i = 0; i < nameSpace.length; i++) {
+                resultFinal += nameSpace[i].charAt(0).toUpperCase() + nameSpace[i].substring(1, nameSpace[i].length).toLowerCase();
+                if(i !== nameSpace.length - 1) {
+                    resultFinal += " ";
+                }
+            } return resultFinal;
+        }
+    </script>
+</html>
